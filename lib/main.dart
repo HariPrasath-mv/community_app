@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'onboarding_page.dart';
+import 'login_page/login.dart';
+import 'login_page/forgot_password.dart'; 
 import 'sign_up_page/signup.dart';
-import 'login.dart';
 import 'pages/home_page/home_page.dart';
 import 'pages/my_unit_page/my_unit_page.dart';
 import 'pages/my_community_page/my_community_page.dart';
@@ -27,15 +29,22 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
         ),
       ),
-      home: const SignupPage(), // Start with the signup page
+      home: const OnboardingPage(), // Start with the Onboarding page
       routes: {
-        '/main': (context) => const MainScreen(), // Navigation to the main screen
-        '/login': (context) => const LoginPage(), // Navigation to the login screen
+        '/login': (context) => const LoginPage(), // Login screen
+        '/signup': (context) => const SignupPage(), // Signup screen
+        '/forgot_password': (context) =>
+            const ForgotPasswordPage(), // Forgot Password screen
+        '/main': (context) => const HomePage(), // Main app screen
       },
     );
   }
 }
 
+// Centralized color definitions
+
+
+// Main app screen with bottom navigation
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -48,16 +57,29 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
-    MyUnitPage(),
-    MyCommunityPage(),
+    const HomePage(),
+    const MyUnitPage(),
+    const MyCommunityPage(),
     BuySellPage(),
     const ConsumerServicePage(),
+  ];
+
+  final List<String> _titles = [
+    "Home",
+    "My Unit",
+    "My Community",
+    "Buy/Sell",
+    "Services",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(_titles[_currentIndex]),
+        backgroundColor: AppColors.appbarColor,
+        foregroundColor: AppColors.appbariconColor,
+      ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         child: _pages[_currentIndex],
@@ -70,7 +92,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF101935),
+        selectedItemColor: AppColors.appColor,
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
@@ -86,4 +108,21 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
+}
+
+class AppColors {
+  static const Color backgroundColor = Color(0xFFFFFFFF); // White background
+  static const Color appbarColor = Color.fromARGB(255, 255, 255, 255); // Deep blue
+  static const Color appColor = Color(0xFF004395); // Accent blue
+  static const Color iconColor = Color(0xFF004395); // Icon blue
+  static const Color appbariconColor = Color(0xFFFFFFFF); // White for app bar icons
+  static const Color appbariconColor2 = Color(0xFF000000); // black for app bar icons
+  static const Color fontColor = Color(0xFF004395); // Dark font color
+  static const Color btnColor1 = Color(0xFF004395); // Dark font color
+  static const Color fontColor2 = Color(0xFFFFFFFF); // Dark font color
+}
+
+class BRadius{
+  static const BorderRadius btnborder = BorderRadius.all(Radius.circular(50.0));
+
 }

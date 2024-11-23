@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/main.dart';
 import '../Profile_page/profile_page.dart';
 import 'ads_page.dart';
 import 'notification_page.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage>
     {
       'image':
           'https://images.unsplash.com/photo-1628336707631-68131ca720c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'text': "Upcoming Yoga Session: Don’t Miss Out!",
+      'text': "Upcoming Yoga Session: Dont Miss Out!",
     },
     {
       'image':
@@ -102,19 +103,19 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor,
         title: const Text(
           'Welcome, User!',
           style: TextStyle(
             fontFamily: 'Urbanist',
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color: Color(0xFFFFFFFF),
+            color:AppColors.fontColor,
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications, color: Color(0xFFFFFFFF)),
+            icon: const Icon(Icons.notifications, color: AppColors.iconColor),
             onPressed: () {
               // Navigate to NotificationPage
               Navigator.push(
@@ -131,133 +132,134 @@ class _HomePageState extends State<HomePage>
               onTap: () => _navigateToProfile(context),
               child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://via.placeholder.com/150', // Replace with your image URL
+                  'https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg', // Replace with your image URL
                 ),
               ),
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Ad Carousel Section
-            SizedBox(
-              height: 200,
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _ads.length,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentAdIndex = index;
-                  });
-                },
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      // Navigate to AdsPage with the ad details
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AdsPage(
-                            imageUrl: _ads[index]['image']!,
-                            adText: _ads[index]['text']!,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 18),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFE4FCFF), // Background color
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  _ads[index]['text']!,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                const Text(
-                                  'Explore ➔',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+      body: Container(
+        color: const Color(0xFFFFFFFF),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Ad Carousel Section
+              SizedBox(
+                height: 200,
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: _ads.length,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentAdIndex = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        // Navigate to AdsPage with the ad details
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AdsPage(
+                              imageUrl: _ads[index]['image']!,
+                              adText: _ads[index]['text']!,
                             ),
                           ),
-                          Image.network(
-                            _ads[index]['image']!,
-                            width: MediaQuery.of(context).size.width *
-                                0.4, // 50% of the width
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 18),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE4FCFF), // Background color
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 8,
+                              offset: const Offset(1, 1),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _ads[index]['text']!,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const Text(
+                                    'Explore ➔',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Image.network(
+                              _ads[index]['image']!,
+                              width: MediaQuery.of(context).size.width *
+                                  0.4, // 50% of the width
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                _ads.length,
-                (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  height: 8,
-                  width: 8, // Same size for both active and inactive indicators
-                  decoration: BoxDecoration(
-                    color: _currentAdIndex == index
-                        ? const Color.fromRGBO(59, 193, 255, 1)
-                        : Colors.grey, // Active and inactive colors
-                    borderRadius: BorderRadius.circular(4),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  _ads.length,
+                  (index) => Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    height: 8,
+                    width:
+                        8, // Same size for both active and inactive indicators
+                    decoration: BoxDecoration(
+                      color: _currentAdIndex == index
+                          ? const Color.fromRGBO(59, 193, 255, 1)
+                          : Colors.grey, // Active and inactive colors
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-            // Dues Section
-            _buildInfoSection(
-              context,
-              'Dues',
-              '₹ 6500.00',
-              Icons.account_balance_wallet,
-              Colors.orange,
-            ),
-            const SizedBox(height: 16),
-            // Gate Updates Section
-            _buildGateUpdatesSection(),
-            const SizedBox(
-                height:
-                    32), // Added more space between Gate Updates and Announcements
-            // Announcements Section
-            _buildAnnouncementsSection(),
-          ],
+              const SizedBox(height: 16),
+              // Dues Section
+              _buildInfoSection(
+                context,
+                'Dues',
+                '₹ 6500.00',
+                Icons.account_balance_wallet,
+                Colors.orange,
+              ),
+              const SizedBox(
+                  height:
+                      32), // Added more space between Gate Updates and Announcements
+              // Announcements Section
+              _buildAnnouncementsSection(),
+            ],
+          ),
         ),
       ),
     );
@@ -324,89 +326,6 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-
-  Widget _buildGateUpdatesSection() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 1),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Gate Updates',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle 'View All' press
-                },
-                child: const Text('View All',
-                    style: TextStyle(color: Colors.blue)),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 120, // Height for the horizontal scroller
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                _buildGateUpdateItem(
-                    'Add Visitor', Icons.person_add, Colors.green),
-                _buildGateUpdateItem('Find Helper', Icons.search, Colors.blue),
-                _buildGateUpdateItem(
-                    'Upcoming Visitor', Icons.upcoming, Colors.orange),
-                _buildGateUpdateItem(
-                    'Past Visitor', Icons.history, Colors.grey),
-              ],
-            ),
-          ),
-          const SizedBox(height: 0), // Added space below Gate Update items
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGateUpdateItem(String title, IconData icon, Color color) {
-    return Container(
-      width: 100, // Width for each item in the scroller
-      margin: const EdgeInsets.only(
-          right: 16, bottom: 10, top: 5), // Margin between items
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: color.withOpacity(0.1),
-            child: Icon(icon, color: color),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildAnnouncementsSection() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),

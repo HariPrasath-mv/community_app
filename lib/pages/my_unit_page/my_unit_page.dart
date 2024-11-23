@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/main.dart';
 import 'unit_details/unit_details_page.dart'; // Import the Unit Details page
 import 'bill_payments/bill_payment_page.dart';
 import '../consumer_service_page/consumer_service_page.dart';
@@ -34,9 +35,10 @@ class MyUnitPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Unit', style: TextStyle(color: Color(0xFFFFFFFF))),
+        title:
+            const Text('My Unit', style: TextStyle(color: AppColors.fontColor)),
         centerTitle: true,
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -58,12 +60,12 @@ class MyUnitPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 10,
-                        offset: const Offset(0, 1)),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.3),
+                  //       blurRadius: 10,
+                  //       offset: const Offset(0, 1)),
+                  // ],
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +75,8 @@ class MyUnitPage extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    Icon(Icons.apartment_rounded, size: 30, color: Color(0xFF101935)),
+                    Icon(Icons.apartment_rounded,
+                        size: 30, color: Color(0xFF101935)),
                   ],
                 ),
               ),
@@ -94,14 +97,14 @@ class MyUnitPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFFFFFF),
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.3),
+                  //     spreadRadius: 1,
+                  //     blurRadius: 5,
+                  //     offset: const Offset(0, 1),
+                  //   ),
+                  // ],
 
                   border: Border.all(color: Colors.red, width: 1),
                 ),
@@ -223,8 +226,13 @@ final List<Map<String, dynamic>> menuItems = [
     'page': const ConsumerServicePage()
   },
   {
-    'icon': Icons.local_hotel,  // Example icon for Facilities
+    'icon': Icons.local_hotel, // Example icon for Facilities
     'label': 'Facilities',
     'page': FacilitiesPage() // New Facilities page
   },
+  {
+    'icon': Icons.hotel, // Example icon for Facilities
+    'label': 'Dining',
+    'page': FacilitiesPage() // New Facilities page
+  }
 ];

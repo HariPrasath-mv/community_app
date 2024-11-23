@@ -109,8 +109,8 @@ class GroceryPage extends StatelessWidget {
       },
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
+            // borderRadius: BorderRadius.circular(18.0),
+            ),
         color: const Color(0xFF101935),
         child: Center(
           child: Column(
@@ -118,7 +118,7 @@ class GroceryPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(2.1),
                   child: Image.asset(
                     'assets/images/$title.png',
                     fit: BoxFit.cover,
