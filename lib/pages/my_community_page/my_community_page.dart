@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
 
 void main() {
   runApp(MyCommunityPage());
@@ -12,10 +13,11 @@ class MyCommunityPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: AppColors.backgroundColor1,
         appBar: AppBar(
-          title: const Text('My Community', style: TextStyle(color: Color(0xFFFFFFFF)),),
+          title: const Text('My Community', style: TextStyle(color: AppColors.fontColor2),),
           centerTitle: true,
-          backgroundColor: Color(0xFF101935),
+          backgroundColor: AppColors.appbarColor1,
         ),
         body: CommunityMessages(),
         floatingActionButton: FloatingActionButton(
@@ -118,7 +120,7 @@ class MessageCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: Color(0xFF279AF1),
+                color: AppColors.fontColor3,
               ),
             ),
             const SizedBox(height: 8),

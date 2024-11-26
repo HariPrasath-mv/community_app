@@ -36,9 +36,10 @@ class MyUnitPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor1,
       appBar: AppBar(
-        title:
-            const Text('My Unit', style: TextStyle(color: AppColors.fontColor1)),
+        title: const Text('My Unit',
+            style: TextStyle(color: AppColors.fontColor2)),
         centerTitle: true,
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.appbarColor1,
       ),
       body: Padding(

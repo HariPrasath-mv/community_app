@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
 import 'add_item_page.dart'; // Import the Add Item Page.
 import 'item_details_page.dart'; // Import the Item Details Page.
 
@@ -43,9 +44,9 @@ class DiscoverPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const Text(
           'Discover',
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          style: TextStyle(color: AppColors.fontColor2),
         ),
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
