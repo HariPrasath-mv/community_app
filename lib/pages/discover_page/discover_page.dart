@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'add_item_page.dart'; // Import the Add Item Page.
 import 'item_details_page.dart'; // Import the Item Details Page.
 
-class BuySellPage extends StatelessWidget {
+class DiscoverPage extends StatelessWidget {
   final List<Map<String, dynamic>> categories = [
     {'name': 'Properties', 'icon': Icons.home},
     {'name': 'Electronics', 'icon': Icons.tv},
@@ -34,14 +34,14 @@ class BuySellPage extends StatelessWidget {
     },
   ];
 
-  BuySellPage({super.key});
+  DiscoverPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Buy/Sell',
+          'Discover',
           style: TextStyle(color: Color(0xFFFFFFFF)),
         ),
         backgroundColor: const Color(0xFF101935),

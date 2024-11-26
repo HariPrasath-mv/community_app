@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../welcome_page.dart'; // Import the WelcomePage
-import '../main.dart';  // Import the AppColors class from main.dart
+import 'package:flutter_project_1/colors.dart';
 
 class OTPVerificationPage extends StatefulWidget {
   const OTPVerificationPage({super.key});
@@ -83,9 +83,10 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor1,
       appBar: AppBar(
         title: const Text('OTP Verification'),
-        backgroundColor: AppColors.appbarColor,
+        backgroundColor: AppColors.appbarColor1,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

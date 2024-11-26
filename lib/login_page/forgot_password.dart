@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/main.dart'; // Import the AppColors class from main.dart
+import 'package:flutter_project_1/colors.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -16,21 +16,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.appbarColor,
+        backgroundColor:  AppColors.appbarColor1,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.appbariconColor2),
+          icon: const Icon(Icons.arrow_back, color: AppColors.appbariconColor1),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: const Text(
           'Forgot Password?',
-          style: TextStyle(color: AppColors.appbariconColor2),
+          style: TextStyle(color: AppColors.appbariconColor1),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: AppColors.backgroundColor, // Custom background color
+          color: AppColors.backgroundColor1, // Custom background color
         ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,7 +41,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: AppColors.fontColor,
+                color: AppColors.fontColor1,
               ),
             ),
             const SizedBox(height: 16),
@@ -60,7 +60,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                prefixIcon: const Icon(Icons.email, color: AppColors.iconColor),
+                prefixIcon: const Icon(Icons.email, color: AppColors.iconColor1),
               ),
             ),
             const SizedBox(height: 32),
@@ -69,7 +69,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 _navigateToResetPasswordPage(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.appColor,
+                backgroundColor: AppColors.backgroundColor1,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -91,7 +91,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 'Create an account',
                 style: TextStyle(
                   fontSize: 16,
-                  color: AppColors.appColor,
+                  color: AppColors.backgroundColor1,
                 ),
               ),
             ),
@@ -122,21 +122,21 @@ class ResetPasswordPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.appbarColor,
+        backgroundColor:  AppColors.appbarColor1,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.appbariconColor),
+          icon: const Icon(Icons.arrow_back, color: AppColors.appbariconColor1),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: const Text(
           'Reset Password',
-          style: TextStyle(color: AppColors.appbariconColor),
+          style: TextStyle(color: AppColors.appbariconColor1),
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: AppColors.backgroundColor, // Custom background color
+          color: AppColors.backgroundColor1, // Custom background color
         ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -147,7 +147,7 @@ class ResetPasswordPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: AppColors.fontColor,
+                color: AppColors.fontColor1,
               ),
             ),
             const SizedBox(height: 16),
@@ -166,7 +166,7 @@ class ResetPasswordPage extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                prefixIcon: const Icon(Icons.lock, color: AppColors.iconColor),
+                prefixIcon: const Icon(Icons.lock, color: AppColors.iconColor1),
               ),
             ),
             const SizedBox(height: 16),
@@ -179,7 +179,7 @@ class ResetPasswordPage extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                prefixIcon: const Icon(Icons.lock, color: AppColors.iconColor),
+                prefixIcon: const Icon(Icons.lock, color: AppColors.iconColor1),
               ),
             ),
             const SizedBox(height: 32),
@@ -189,7 +189,7 @@ class ResetPasswordPage extends StatelessWidget {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.appColor,
+                backgroundColor:  AppColors.appbarColor1,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

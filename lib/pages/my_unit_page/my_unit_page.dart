@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/main.dart';
+import 'package:flutter_project_1/colors.dart';
 import 'unit_details/unit_details_page.dart'; // Import the Unit Details page
 import 'bill_payments/bill_payment_page.dart';
 import '../consumer_service_page/consumer_service_page.dart';
@@ -34,11 +34,12 @@ class MyUnitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor1,
       appBar: AppBar(
         title:
-            const Text('My Unit', style: TextStyle(color: AppColors.fontColor)),
+            const Text('My Unit', style: TextStyle(color: AppColors.fontColor1)),
         centerTitle: true,
-        backgroundColor: AppColors.appbarColor,
+        backgroundColor: AppColors.appbarColor1,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

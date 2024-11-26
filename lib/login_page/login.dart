@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/main.dart';
+import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/design.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -90,6 +91,7 @@ class _LoginPageState extends State<LoginPage>
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
+                    color: AppColors.fontColor3,
                   ),
                 ),
                 const SizedBox(
@@ -144,8 +146,8 @@ class _LoginPageState extends State<LoginPage>
                   position: _loginButtonSlideAnimation,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Handle login logic here
-                    },
+                          Navigator.pushNamed(context, '/otp'); // Navigate to signup
+                        },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF004395),
                       minimumSize: const Size(double.infinity, 50),
@@ -206,7 +208,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                 ),
 
-                const Spacer(),
+                const SizedBox(height: 10,),
                 // Create Account Button
                 Center(
                   child: TextButton(
@@ -216,7 +218,7 @@ class _LoginPageState extends State<LoginPage>
                     child: const Text(
                       "Create an account",
                       style: TextStyle(
-                        color: Color(0xFF004395),
+                        color: AppColors.fontColor3,
                       ),
                     ),
                   ),

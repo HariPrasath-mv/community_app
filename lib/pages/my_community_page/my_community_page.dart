@@ -38,9 +38,9 @@ class CommunityMessages extends StatelessWidget {
       'title': 'Message 1',
       'message': 'Description',
       'images': [
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
       ],
     },
     {
@@ -49,11 +49,11 @@ class CommunityMessages extends StatelessWidget {
       'title': 'Message 2',
       'message': 'Description',
       'images': [
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
-        'https://via.placeholder.com/150',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhK70llviJTmTJ7kq-mWnvxXc-2uz2gDTOvQ&s',
       ],
     },
     {

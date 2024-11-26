@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../otp_verification_page/otp_verification_page.dart';
-import '../main.dart'; // Import the AppColors class from main.dart
+import 'package:flutter_project_1/colors.dart'; // Import the AppColors class from main.dart
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -23,6 +23,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor1,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Form(
@@ -34,44 +35,52 @@ class _SignupPageState extends State<SignupPage> {
               // Reduced the gap to make the back icon visually aligned
 
               // Back Button
-              const SizedBox(height: 25),
+              const SizedBox(height: 20),
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
                   icon:
-                      const Icon(Icons.arrow_back, color: AppColors.iconColor),
+                      const Icon(Icons.arrow_back, color: AppColors.iconColor1),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
               ),
 
-              Center(
-                child: SvgPicture.asset(
-                  'assets/icons/sign_up/signup_image.svg', // Add the SVG file to your assets folder
-                  height: 200, // Adjust the height as needed
-                  width: 200, // Adjust the width as needed
-                ),
-              ),
+              // Center(
+              //   child: SvgPicture.asset(
+              //     'assets/icons/sign_up/signup_image.svg', // Add the SVG file to your assets folder
+              //     height: 150, // Adjust the height as needed
+              //     width: 200, // Adjust the width as needed
+              //   ),
+              // ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
 
               Text(
                 'Sign Up',
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                      color: AppColors.fontColor,
+                      color: AppColors.fontColor3,
                     ),
               ),
+              const SizedBox(height: 20),
+              const Text(
+                  "Create an account",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
               const SizedBox(height: 20),
 
               TextFormField(
                 controller: _usernameController,
                 decoration: InputDecoration(
                   labelText: 'Username',
-                  labelStyle: const TextStyle(color: AppColors.fontColor),
+                  labelStyle: const TextStyle(color: AppColors.fontColor5),
                   border: const OutlineInputBorder(),
                   prefixIcon:
-                      const Icon(Icons.person, color: AppColors.iconColor),
+                      const Icon(Icons.person, color: AppColors.iconColor1),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -86,10 +95,10 @@ class _SignupPageState extends State<SignupPage> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email-ID',
-                  labelStyle: const TextStyle(color: AppColors.fontColor),
+                  labelStyle: const TextStyle(color: AppColors.fontColor5),
                   border: const OutlineInputBorder(),
                   prefixIcon:
-                      const Icon(Icons.email, color: AppColors.iconColor),
+                      const Icon(Icons.email, color: AppColors.iconColor1),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
@@ -108,13 +117,13 @@ class _SignupPageState extends State<SignupPage> {
                 controller: _phoneController,
                 decoration: InputDecoration(
                   labelText: 'Mobile Number',
-                  labelStyle: const TextStyle(color: AppColors.fontColor),
+                  labelStyle: const TextStyle(color: AppColors.fontColor5),
                   border: const OutlineInputBorder(),
                   prefixIcon:
-                      const Icon(Icons.phone, color: AppColors.iconColor),
+                      const Icon(Icons.phone, color: AppColors.iconColor1),
+                  counterText: '',
                 ),
-                initialCountryCode:
-                    'IN', // Set initial country code to India (+91)
+                initialCountryCode: 'IN',
                 validator: (phone) {
                   if (phone == null || phone.number.isEmpty) {
                     return 'Please enter your mobile number';
@@ -122,16 +131,17 @@ class _SignupPageState extends State<SignupPage> {
                   return null;
                 },
               ),
+
               const SizedBox(height: 20),
 
               TextFormField(
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  labelStyle: const TextStyle(color: AppColors.fontColor),
+                  labelStyle: const TextStyle(color: AppColors.fontColor5),
                   border: const OutlineInputBorder(),
                   prefixIcon:
-                      const Icon(Icons.lock, color: AppColors.iconColor),
+                      const Icon(Icons.lock, color: AppColors.iconColor1),
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -150,10 +160,10 @@ class _SignupPageState extends State<SignupPage> {
                 controller: _confirmPasswordController,
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
-                  labelStyle: const TextStyle(color: AppColors.fontColor),
+                  labelStyle: const TextStyle(color: AppColors.fontColor5),
                   border: const OutlineInputBorder(),
                   prefixIcon: const Icon(Icons.lock_outline,
-                      color: AppColors.iconColor),
+                      color: AppColors.iconColor1),
                 ),
                 obscureText: true,
                 validator: (value) {
@@ -184,7 +194,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 child: const Text('Sign Up',
                     style:
-                        TextStyle(fontSize: 18, color: AppColors.fontColor2)),
+                        TextStyle(fontSize: 18, color: AppColors.fontColor1)),
               ),
 
               const SizedBox(height: 20),
@@ -196,7 +206,7 @@ class _SignupPageState extends State<SignupPage> {
                   },
                   child: const Text(
                     'Already have an account? Log in',
-                    style: TextStyle(fontSize: 16, color: AppColors.fontColor),
+                    style: TextStyle(fontSize: 16, color: AppColors.fontColor3),
                   ),
                 ),
               ),

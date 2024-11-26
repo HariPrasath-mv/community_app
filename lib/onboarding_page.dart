@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/design.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -72,7 +74,7 @@ class _OnboardingPageState extends State<OnboardingPage>
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.backgroundColor1,
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
@@ -129,10 +131,10 @@ class _OnboardingPageState extends State<OnboardingPage>
                           Navigator.pushNamed(context, '/login'); // Navigate to login
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF004395),
+                          backgroundColor: AppColors.btnColor1,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BRadius.btnborder,
                           ),
                         ),
                         child: const Center(
@@ -151,7 +153,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                           "Create an account",
                           style: TextStyle(
                             fontSize: 16,
-                            color: Color(0xFF004395),
+                            color: AppColors.fontColor3,
                           ),
                         ),
                       ),

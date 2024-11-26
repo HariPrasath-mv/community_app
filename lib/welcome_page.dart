@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'main.dart'; // Import the AppColors class from main.dart
-import 'pages/home_page/home_page.dart'; // Import the HomePage
+import 'package:flutter_project_1/colors.dart';
+import 'main_screen.dart'; // Import the AppColors class from main.dart
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -94,7 +94,7 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
               // Welcome Text with animation
               SlideTransition(
@@ -121,7 +121,7 @@ class _WelcomePageState extends State<WelcomePage>
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
 
               // Continue Button with minimal animation
               FadeTransition(
@@ -130,7 +130,8 @@ class _WelcomePageState extends State<WelcomePage>
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(
+                          builder: (context) => const MainScreen()),
                     );
                   },
                   child: AnimatedContainer(
@@ -139,7 +140,7 @@ class _WelcomePageState extends State<WelcomePage>
                     padding: const EdgeInsets.symmetric(
                         vertical: 14, horizontal: 60),
                     decoration: BoxDecoration(
-                      color: AppColors.appColor,
+                      color: AppColors.btnColor1,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Text(
@@ -149,7 +150,7 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 100),
             ],
           );
         },

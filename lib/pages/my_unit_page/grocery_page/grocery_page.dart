@@ -120,7 +120,7 @@ class GroceryPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.1),
                   child: Image.asset(
-                    'assets/images/$title.png',
+                    'assets/images//grocery/catagory_images/$title.png',
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),

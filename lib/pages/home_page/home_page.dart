@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/main.dart';
+import 'package:flutter_project_1/colors.dart';
 import '../Profile_page/profile_page.dart';
 import 'ads_page.dart';
 import 'notification_page.dart';
@@ -103,19 +103,20 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.appbarColor,
+        leading: AbsorbPointer(), 
+        backgroundColor: AppColors.appbarColor1,
         title: const Text(
           'Welcome, User!',
           style: TextStyle(
             fontFamily: 'Urbanist',
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color:AppColors.fontColor,
+            color:AppColors.fontColor2,
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications, color: AppColors.iconColor),
+            icon: const Icon(Icons.notifications, color: AppColors.iconColor1),
             onPressed: () {
               // Navigate to NotificationPage
               Navigator.push(
