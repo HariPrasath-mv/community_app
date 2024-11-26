@@ -102,8 +102,9 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // onWillPop: () async => false,
         elevation: 0,
-        leading: AbsorbPointer(), 
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.appbarColor1,
         title: const Text(
           'Welcome, User!',

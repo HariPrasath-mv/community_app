@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'service_details_page.dart';
+import 'package:flutter_project_1/colors.dart';
 
 class ConsumerServicePage extends StatelessWidget {
   const ConsumerServicePage({super.key});
@@ -74,11 +75,12 @@ class ConsumerServicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Services', style: TextStyle(color: Color(0xFFFFFFFF))),
+        automaticallyImplyLeading: false,
+        title: const Text('Services', style: TextStyle(color: AppColors.fontColor2)),
         centerTitle: true,
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor1,
         ),
       ),
       body: GridView.builder(

@@ -40,6 +40,7 @@ class DiscoverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Discover',
           style: TextStyle(color: Color(0xFFFFFFFF)),

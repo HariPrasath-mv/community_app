@@ -10,7 +10,6 @@ class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _MainScreenState createState() => _MainScreenState();
 }
 
@@ -28,6 +27,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   // title: const Text("App Title"), // Add a general title or change dynamically based on `_currentIndex`
+      //   automaticallyImplyLeading: false, // Removes the back button
+      //   // backgroundColor: AppColors.iconColor1,
+      // ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         child: _pages[_currentIndex],
@@ -44,14 +48,10 @@ class _MainScreenState extends State<MainScreen> {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.apartment), label: "My Unit"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.people), label: "My Community"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.public), label: "Discover"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Services"),
+          BottomNavigationBarItem(icon: Icon(Icons.apartment), label: "My Unit"),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: "My Community"),
+          BottomNavigationBarItem(icon: Icon(Icons.public), label: "Discover"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Services"),
         ],
       ),
     );

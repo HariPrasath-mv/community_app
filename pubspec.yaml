@@ -49,22 +49,14 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/images/facilities/
-    - assets/images/sample.png
-    - assets/images/facilities/swimming_pool.png
-    - assets/images/facilities/squash_court.png
-    - assets/images/facilities/clubhouse.png
-    - assets/images/facilities/badminton_court.png
-    - assets/images/facilities/cricket_nets.png
-    - assets/images/facilities/barbecue_pit.png
+    - assets/images/grocery/
     - assets/images/discover/
+    - assets/images/facilities/
     - assets/images/grocery/catagory_images/
-    - assets/images/discover/sony_tv.png
-    - assets/images/discover/mattress.png
-    - assets/images/discover/comic_books.png
+    - assets/images/discover/
     - assets/icons/consumer_service/
     - assets/icons/sign_up/
     - assets/icons/sign_up/signup_image.svg
-    - assets/images/grocery/
 
   fonts:
     - family: Urbanist
