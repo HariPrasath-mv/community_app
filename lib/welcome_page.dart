@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_project_1/colors.dart';
-import 'main_screen.dart'; // Import the AppColors class from main.dart
+import 'main_screen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
