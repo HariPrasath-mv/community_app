@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
 import 'categories/fruits_vegetables.dart';
 import 'categories/dairy_eggs.dart';
 import 'categories/bakery_bread.dart';
@@ -21,11 +22,11 @@ class GroceryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Grocery Categories',
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          style: TextStyle(color: AppColors.fontColor2),
         ),
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor2,
         ),
       ),
       body: GridView.count(
@@ -37,7 +38,7 @@ class GroceryPage extends StatelessWidget {
           _buildCategoryCard(
             context,
             'Fruits & Vegetables',
-            const FruitsVegetablesPage(),
+            FruitsVegetablesPage(),
           ),
           _buildCategoryCard(
             context,
@@ -111,7 +112,7 @@ class GroceryPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
             // borderRadius: BorderRadius.circular(18.0),
             ),
-        color: const Color(0xFF101935),
+        color: AppColors.backgroundColor1,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +132,7 @@ class GroceryPage extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.fontColor2,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),

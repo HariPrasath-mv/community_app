@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
 
 class BabyProductsPage extends StatelessWidget {
   const BabyProductsPage({super.key});
@@ -8,7 +9,7 @@ class BabyProductsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Baby Products'),
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor1,
       ),
       body: const Center(
         child: Text(

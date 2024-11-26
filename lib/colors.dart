@@ -17,7 +17,7 @@ class AppColors {
   
   static const Color appbariconColor1 = Color(0xFF004395);
   static const Color appbariconColor2 = Color(0xFF000000);
-  static const Color appbariconColor3 = Color(0xFF000000);
+  static const Color appbariconColor3 = Color(0xFFFFFFFF);
   
   static const Color fontColor1 = Color(0xFFFFFFFF);
   static const Color fontColor2 = Color(0xFF000000);
