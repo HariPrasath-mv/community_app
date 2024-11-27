@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_project_1/colors.dart';
 import 'package:intl/intl.dart';
 import 'payment_data.dart';
 import 'account_transfer_page.dart';
@@ -9,7 +11,6 @@ class BillPaymentPage extends StatefulWidget {
   const BillPaymentPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _BillPaymentPageState createState() => _BillPaymentPageState();
 }
 
@@ -22,14 +23,12 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
     'Cable TV': 45.0,
   };
 
-  // This will calculate the total balance from sample values
   double get totalBalance => sampleValues.values.reduce((a, b) => a + b);
 
   @override
   void initState() {
     super.initState();
-    // Initialize total balance from sample values
-    PaymentData().totalBalance = totalBalance; // Update PaymentData singleton
+    PaymentData().totalBalance = totalBalance;
   }
 
   @override
@@ -38,12 +37,13 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
         NumberFormat.currency(locale: 'en_IN', symbol: '₹');
 
     return Scaffold(
+      backgroundColor: AppColors.appbarColor1,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF101935),
+        backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor2,
         ),
-        title: const Text('Bill Payments', style: TextStyle(color: Color(0xFFFFFFFF))),
+        title: const Text('Bill Payments', style: TextStyle(color: AppColors.fontColor2)),
         centerTitle: true,
       ),
       body: Padding(
@@ -51,10 +51,6 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Select a Category',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
             const SizedBox(height: 16.0),
             Column(
               children: sampleValues.entries.map((entry) {
@@ -76,48 +72,52 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-            Column(
-              children: [
-                PaymentMethodTile(
-                  icon: Icons.account_circle,
-                  label: 'UPI',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => UpiPaymentPage(
-                            totalAmount:
-                                totalBalance), // Pass total balance here
-                      ),
-                    );
-                  },
-                ),
-                PaymentMethodTile(
-                  icon: Icons.account_balance_wallet,
-                  label: 'Wallet',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            WalletPaymentPage(totalAmount: totalBalance),
-                      ),
-                    );
-                  },
-                ),
-                PaymentMethodTile(
-                  icon: Icons.account_balance,
-                  label: 'Account Transfer',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AccountTransferPage(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3, // Changed to 3 columns
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 16.0,
+                children: [
+                  PaymentMethodTile(
+                    svgPath: 'assets/icons/payments/upi.svg',
+                    label: 'UPI',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UpiPaymentPage(totalAmount: totalBalance),
+                        ),
+                      );
+                    },
+                  ),
+                  PaymentMethodTile(
+                    svgPath: 'assets/icons/payments/wallet.svg',
+                    label: 'Wallet',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              WalletPaymentPage(totalAmount: totalBalance),
+                        ),
+                      );
+                    },
+                  ),
+                  PaymentMethodTile(
+                    svgPath: 'assets/icons/payments/account_transfer.svg',
+                    label: 'Card Payment',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AccountTransferPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -148,27 +148,37 @@ class BillCategoryTile extends StatelessWidget {
 }
 
 class PaymentMethodTile extends StatelessWidget {
-  final IconData icon;
+  final String svgPath;
   final String label;
   final VoidCallback onTap;
 
   const PaymentMethodTile({
     super.key,
-    required this.icon,
+    required this.svgPath,
     required this.label,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, size: 40, color: const Color(0xFF101935)),
-      title: Text(
-        label,
-        style: const TextStyle(fontSize: 18),
-      ),
-      trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+    return GestureDetector(
       onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            svgPath,
+            width: 60,
+            height: 60,
+          ),
+          const SizedBox(height: 8.0),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }

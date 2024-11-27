@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_project_1/colors.dart';
 
 class UpiPaymentPage extends StatelessWidget {
   final double totalAmount; // Accept total balance as a parameter
@@ -7,15 +9,17 @@ class UpiPaymentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController amountController = 
+    final TextEditingController amountController =
         TextEditingController(text: totalAmount.toStringAsFixed(2));
 
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor1,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF101935),
-        title: const Text('UPI Payment', style: TextStyle(color: Color(0xFFFFFFFF))),
+        backgroundColor: AppColors.appbarColor1,
+        title: const Text('UPI Payment',
+            style: TextStyle(color: AppColors.fontColor2)),
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor2,
         ),
       ),
       body: Padding(
@@ -32,7 +36,8 @@ class UpiPaymentPage extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'e.g., username@upi',
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.account_balance_wallet, color: Color(0xFF101935)),
+                prefixIcon: Icon(Icons.account_balance_wallet,
+                    color: Color(0xFF101935)),
               ),
             ),
             const SizedBox(height: 20.0),
@@ -41,38 +46,8 @@ class UpiPaymentPage extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8.0),
-            Expanded(
-              child: ListView(
-                children: [
-                  ListTile(
-                    leading: const Icon(Icons.account_balance, color: Color(0xFF101935),),
-                    title: const Text('example1@upi'),
-                    trailing: ElevatedButton(
-                      onPressed: () {
-                        // Add selection logic here
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF101935),
-                      ),
-                      child: const Text('Select', style: TextStyle(color: Color(0xFFFFFFFF))),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.account_balance, color: Color(0xFF101935)),
-                    title: const Text('example2@upi'),
-                    trailing: ElevatedButton(
-                      onPressed: () {
-                        // Add selection logic here
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF101935),
-                      ),
-                      child: const Text('Select', style: TextStyle(color: Color(0xFFFFFFFF))),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const Text('No saved UPI IDs available',
+                style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 20.0),
             const Text(
               'Amount to Pay',
@@ -90,15 +65,55 @@ class UpiPaymentPage extends StatelessWidget {
               readOnly: true, // Make the field read-only
             ),
             const SizedBox(height: 20.0),
+            const Text(
+              'Choose Payment Method',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3, // Three columns
+                crossAxisSpacing: 25.0,
+                mainAxisSpacing: 20.0,
+                children: [
+                  PaymentOptionTile(
+                    svgPath: 'assets/icons/payments/gpay.svg',
+                    label: 'GPay',
+                    onTap: () {
+                      // Handle GPay selection
+                      print('GPay Selected');
+                    },
+                  ),
+                  PaymentOptionTile(
+                    svgPath: 'assets/icons/payments/paytm.svg',
+                    label: 'Paytm',
+                    onTap: () {
+                      // Handle Paytm selection
+                      print('Paytm Selected');
+                    },
+                  ),
+                  PaymentOptionTile(
+                    svgPath: 'assets/icons/payments/phonepe.svg',
+                    label: 'PhonePe',
+                    onTap: () {
+                      // Handle PhonePe selection
+                      print('PhonePe Selected');
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20.0),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   // Add payment logic here
+                  print('Proceeding to Pay');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF101935),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40.0, vertical: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 40.0, vertical: 16.0),
                 ),
                 child: const Text(
                   'Proceed to Pay',
@@ -116,6 +131,42 @@ class UpiPaymentPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PaymentOptionTile extends StatelessWidget {
+  final String svgPath;
+  final String label;
+  final VoidCallback onTap;
+
+  const PaymentOptionTile({
+    super.key,
+    required this.svgPath,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            svgPath,
+            width: 60,
+            height: 80,
+          ),
+          const SizedBox(height: 8.0),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }

@@ -21,9 +21,10 @@ class GroceryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Grocery Categories',
+          'Groceries',
           style: TextStyle(color: AppColors.fontColor2),
         ),
+        centerTitle: true,
         backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(
           color: AppColors.appbariconColor2,

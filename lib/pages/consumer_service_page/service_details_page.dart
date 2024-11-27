@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ServiceDetailsPage extends StatelessWidget {
@@ -15,10 +16,10 @@ class ServiceDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title, style: TextStyle(color: Color(0xFFFFFFFF))),
-        backgroundColor: const Color(0xFF101935),
+        title: Text(title, style: TextStyle(color: AppColors.fontColor2)),
+        backgroundColor:AppColors.appbarColor1,
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor2,
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

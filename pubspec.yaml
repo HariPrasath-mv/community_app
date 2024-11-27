@@ -48,6 +48,8 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
+    - assets/icons/
+    - assets/icons/payments/
     - assets/images/grocery/catagory_images/fruits_and_vegetables/
     - assets/images/facilities/
     - assets/images/grocery/

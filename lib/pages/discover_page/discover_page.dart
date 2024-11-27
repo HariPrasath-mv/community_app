@@ -56,7 +56,7 @@ class DiscoverPage extends StatelessWidget {
         children: [
           // Search and My Listings
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20.0),
             child: Row(
               children: [
                 Expanded(
@@ -65,23 +65,12 @@ class DiscoverPage extends StatelessWidget {
                       prefixIcon: const Icon(Icons.search),
                       hintText: 'Search',
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 8.0),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigate to user's listings (functionality can be added later)
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  child: const Text('My Listings'),
-                ),
               ],
             ),
           ),
@@ -133,7 +122,10 @@ class DiscoverPage extends StatelessWidget {
           );
         },
         backgroundColor: const Color(0xFF101935),
-        child: const Icon(Icons.add, color: Color(0xFFFFFFFF),),
+        child: const Icon(
+          Icons.add,
+          color: Color(0xFFFFFFFF),
+        ),
       ),
     );
   }
