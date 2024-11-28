@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 import 'package:intl/intl.dart';
-import 'payment_data.dart';
 import 'account_transfer_page.dart';
 import 'upi_payment_page.dart';
 import 'wallet_payment_page.dart';
@@ -23,13 +22,8 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
     'Cable TV': 45.0,
   };
 
+  // Method to calculate the total balance
   double get totalBalance => sampleValues.values.reduce((a, b) => a + b);
-
-  @override
-  void initState() {
-    super.initState();
-    PaymentData().totalBalance = totalBalance;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +31,7 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
         NumberFormat.currency(locale: 'en_IN', symbol: '₹');
 
     return Scaffold(
-      backgroundColor: AppColors.appbarColor1,
+      backgroundColor: AppColors.backgroundColor1,
       appBar: AppBar(
         backgroundColor: AppColors.appbarColor1,
         iconTheme: const IconThemeData(

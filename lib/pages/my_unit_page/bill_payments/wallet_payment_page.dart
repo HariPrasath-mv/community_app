@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 
 class WalletPaymentPage extends StatefulWidget {
   final double totalAmount; // Amount from Bill Payment Page
@@ -19,10 +20,10 @@ class _WalletPaymentPageState extends State<WalletPaymentPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF101935),
-        title: const Text('Wallet Payment', style: TextStyle(color: Color(0xFFFFFFFF))),
+        backgroundColor: AppColors.appbarColor1,
+        title: const Text('Wallet Payment', style: TextStyle(color: AppColors.fontColor2)),
         iconTheme: const IconThemeData(
-          color: Colors.white,
+          color: AppColors.appbariconColor2,
         ),
       ),
       body: Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'service_details_page.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 
 class ConsumerServicePage extends StatelessWidget {
   const ConsumerServicePage({super.key});

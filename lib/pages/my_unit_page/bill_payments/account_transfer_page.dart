@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 
 class AccountTransferPage extends StatefulWidget {
   const AccountTransferPage({super.key});

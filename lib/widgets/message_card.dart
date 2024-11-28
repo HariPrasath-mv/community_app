@@ -1,96 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_1/widgets/colors.dart';
-
-void main() {
-  runApp(MyCommunityPage());
-}
-
-class MyCommunityPage extends StatelessWidget {
-  const MyCommunityPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: AppColors.backgroundColor1,
-        appBar: AppBar(
-          backgroundColor: AppColors.appbarColor1,
-          elevation: 4,
-          centerTitle: true,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'My Community',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.fontColor2,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                // Action for notifications
-              },
-              icon: const Icon(Icons.notifications_none, color: AppColors.fontColor2),
-            ),
-            IconButton(
-              onPressed: () {
-                // Action for search
-              },
-              icon: const Icon(Icons.search, color: AppColors.fontColor2),
-            ),
-          ],
-        ),
-        body: CommunityMessages(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Action for FAB
-          },
-          backgroundColor: const Color(0xFF279AF1),
-          child: const Icon(Icons.add),
-        ),
-      ),
-    );
-  }
-}
-
-class CommunityMessages extends StatelessWidget {
-  final List<Map<String, dynamic>> messages = [
-    {
-      'profileImage': 'https://fps.cdnpk.net/images/ai/image-generator/gallery/resource-tti-12.webp',
-      'name': 'User007',
-      'unit': 'Owner, B501',
-      'timestamp': '22 May 2050, 10:30 PM',
-      'title': 'Welcome to our Community',
-      'message': 'This is your first Community Message',
-      'images': [
-        'https://fps.cdnpk.net/images/ai/image-generator/gallery/resource-tti-15.webp',
-        'https://fps.cdnpk.net/images/ai/image-generator/gallery/magnific-cat.webp',
-        'https://fps.cdnpk.net/images/ai/image-generator/gallery/magnific-robot.webp',
-      ],
-      'likes': 0,
-      'comments': 0,
-    },
-  ];
-
-  CommunityMessages({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: messages.length,
-      itemBuilder: (context, index) {
-        return MessageCard(message: messages[index]);
-      },
-    );
-  }
-}
+// import 'package:flutter_project_1/widgets/colors.dart';
 
 class MessageCard extends StatelessWidget {
   final Map<String, dynamic> message;
@@ -100,7 +10,7 @@ class MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
@@ -141,7 +51,8 @@ class MessageCard extends StatelessWidget {
                 // Timestamp
                 Text(
                   message['timestamp'] ?? '',
-                  style: const TextStyle(color: Colors.grey, fontSize: 10),
+                  style: const TextStyle(
+                      color: AppColors.fontColor3, fontSize: 10),
                 ),
               ],
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 import 'categories/fruits_vegetables.dart';
 import 'categories/dairy_eggs.dart';
 import 'categories/bakery_bread.dart';

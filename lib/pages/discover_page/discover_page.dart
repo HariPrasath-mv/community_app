@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 import 'add_item_page.dart'; // Import the Add Item Page.
-import 'item_details_page.dart'; // Import the Item Details Page.
+// import 'item_details_page.dart'; // Import the Item Details Page.
 
 class DiscoverPage extends StatelessWidget {
-  final List<Map<String, dynamic>> categories = [
-    {'name': 'Properties', 'icon': Icons.home},
-    {'name': 'Electronics', 'icon': Icons.tv},
-    {'name': 'Furniture', 'icon': Icons.chair},
-    {'name': 'Vehicles', 'icon': Icons.directions_car},
-  ];
 
   final List<Map<String, dynamic>> listings = [
     {
@@ -83,34 +77,6 @@ class DiscoverPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8.0),
-          SizedBox(
-            height: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-                return _buildCategoryCard(category);
-              },
-            ),
-          ),
-          // Listings Section
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(
-              'Listings from My Community',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: listings.length,
-              itemBuilder: (context, index) {
-                final listing = listings[index];
-                return _buildListingCard(context, listing);
-              },
-            ),
-          ),
         ],
       ),
       // Floating Action Button
@@ -125,62 +91,6 @@ class DiscoverPage extends StatelessWidget {
         child: const Icon(
           Icons.add,
           color: Color(0xFFFFFFFF),
-        ),
-      ),
-    );
-  }
-
-  // Category Card
-  Widget _buildCategoryCard(Map<String, dynamic> category) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundColor: const Color(0xFF101935),
-            child: Icon(category['icon'],
-                color: const Color(0xFFFFFFFF), size: 30.0),
-          ),
-          const SizedBox(height: 8.0),
-          Text(category['name'], style: const TextStyle(fontSize: 14.0)),
-        ],
-      ),
-    );
-  }
-
-  // Listing Card
-  Widget _buildListingCard(BuildContext context, Map<String, dynamic> listing) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ItemDetailsPage(listing: listing),
-          ),
-        );
-      },
-      child: Card(
-        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: ListTile(
-          leading:
-              Image.asset(listing['image'], width: 50.0, fit: BoxFit.cover),
-          title: Text(listing['title'],
-              style: const TextStyle(fontWeight: FontWeight.bold)),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(listing['price']),
-              Text(listing['location'],
-                  style: TextStyle(color: Colors.grey[600])),
-            ],
-          ),
-          trailing: Chip(
-            label: Text(listing['status']),
-            backgroundColor: listing['status'] == 'FREE'
-                ? Colors.green[100]
-                : Colors.red[100],
-          ),
         ),
       ),
     );

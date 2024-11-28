@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/colors.dart';
-import 'pages/home_page/home_page.dart';
-import 'pages/my_unit_page/my_unit_page.dart';
-import 'pages/my_community_page/my_community_page.dart';
-import 'pages/discover_page/discover_page.dart';
-import 'pages/consumer_service_page/consumer_service_page.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
+import 'package:flutter_project_1/pages/home_page/home_page.dart';
+
+import 'my_unit_page/my_unit_page.dart';
+import 'my_community_page/my_community_page.dart';
+import 'discover_page/discover_page.dart';
+import 'consumer_service_page/consumer_service_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -17,9 +18,9 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
+    HomePage(),
     const MyUnitPage(),
-    const MyCommunityPage(),
+    MyCommunityPage(),
     DiscoverPage(),
     const ConsumerServicePage(),
   ];
@@ -44,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.iconColor1,
+        selectedItemColor: AppColors.iconColor2,
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),

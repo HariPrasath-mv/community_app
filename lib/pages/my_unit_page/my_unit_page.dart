@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
 import 'unit_details/unit_details_page.dart'; // Import the Unit Details page
 import 'bill_payments/bill_payment_page.dart';
 import '../consumer_service_page/consumer_service_page.dart';

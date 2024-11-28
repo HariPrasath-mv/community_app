@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../otp_verification_page/otp_verification_page.dart';
-import 'package:flutter_project_1/colors.dart'; // Import the AppColors class from main.dart
+import 'package:flutter_project_1/widgets/colors.dart'; // Import the AppColors class from main.dart
+import 'package:flutter_project_1/pages/otp_verification_page/otp_verification_page.dart'; // Import the AppColors class from main.dart
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
