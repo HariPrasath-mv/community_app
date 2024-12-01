@@ -10,8 +10,9 @@ class MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      elevation: 4,
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      elevation: 15,
+      color: AppColors.backgroundColor1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -86,7 +87,7 @@ class MessageCard extends StatelessWidget {
                     message['images'].length > 3 ? 3 : message['images'].length,
                 itemBuilder: (context, index) {
                   return ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.network(
                       message['images'][index],
                       fit: BoxFit.cover,
@@ -102,14 +103,14 @@ class MessageCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.thumb_up_alt_outlined, color: Colors.grey),
+                    Icon(Icons.thumb_up, color: const Color(0xFF004395)),
                     const SizedBox(width: 4),
                     Text('${message['likes']} Likes'),
                   ],
                 ),
                 Row(
                   children: [
-                    Icon(Icons.comment_outlined, color: Colors.grey),
+                    Icon(Icons.comment_outlined, color:Color(0xFF004395)),
                     const SizedBox(width: 4),
                     Text('${message['comments']} Comments'),
                   ],

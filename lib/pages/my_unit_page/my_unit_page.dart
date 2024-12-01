@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/widgets/colors.dart';
-import 'unit_details/unit_details_page.dart'; // Import the Unit Details page
+import 'package:flutter_svg/flutter_svg.dart';
 import 'bill_payments/bill_payment_page.dart';
-import '../consumer_service_page/consumer_service_page.dart';
-import '../my_unit_page/gatekeeper_page/gatekeeper_page.dart';
-import '../my_unit_page/helpdesk_page/helpdesk_page.dart';
-import '../my_unit_page/grocery_page/grocery_page.dart';
-import '../my_unit_page/facilities_page/facilities_page.dart'; // New import for Facilities page
+
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        dialogBackgroundColor: const Color(0xFF101935),
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Urbanist', // Use a modern font
+        fontFamily: 'Urbanist', // Modern font
       ),
       home: const MyUnitPage(),
     );
@@ -34,158 +29,82 @@ class MyUnitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor1,
-      appBar: AppBar(
-        title: const Text('My Unit',
-            style: TextStyle(color: AppColors.fontColor2)),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.appbarColor1,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Unit info section with navigation
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const UnitDetailsPage(),
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      'Unit No: A - Block-1',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Icon(Icons.apartment_rounded,
-                        size: 30, color: Color(0xFF101935)),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Pending dues section
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const BillPaymentPage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFFFFFF),
-                  borderRadius: BorderRadius.circular(12),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: Colors.grey.withOpacity(0.3),
-                  //     spreadRadius: 1,
-                  //     blurRadius: 5,
-                  //     offset: const Offset(0, 1),
-                  //   ),
-                  // ],
-
-                  border: Border.all(color: Colors.red, width: 1),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: const [
-                        Icon(Icons.attach_money_outlined, color: Colors.red),
-                        SizedBox(width: 10),
-                        Text(
-                          'Pending Due:',
-                          style: TextStyle(fontSize: 16, color: Colors.red),
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      '₹5,300',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Menu section
-            const SizedBox(height: 10),
-
-            // GridView for menu options
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Number of columns
-                  crossAxisSpacing: 10, // Spacing between columns
-                  mainAxisSpacing: 10, // Spacing between rows
-                  childAspectRatio: 1, // Aspect ratio for grid items
-                ),
-                itemCount: menuItems.length,
-                itemBuilder: (context, index) {
-                  final item = menuItems[index];
-                  return _menuItem(
-                    context,
-                    item['icon'],
-                    item['label'],
-                    item['page'],
-                  );
-                },
-              ),
-            ),
-          ],
+      backgroundColor: const Color(0xFFF5F5F5), // Light background
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const MyUnitTitle(),
+              const SizedBox(height: 20),
+              UnitInfoSection(),
+              const SizedBox(height: 16),
+              PendingDuesSection(),
+              const SizedBox(height: 20),
+              Expanded(child: MyUnitOptions()),
+            ],
+          ),
         ),
       ),
     );
   }
+}
 
-  // Helper method to create menu items
-  Widget _menuItem(
-      BuildContext context, IconData icon, String label, Widget page) {
+class MyUnitTitle extends StatelessWidget {
+  const MyUnitTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      'My Unit',
+      style: TextStyle(
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+        color: Colors.black87,
+      ),
+    );
+  }
+}
+
+class UnitInfoSection extends StatelessWidget {
+  const UnitInfoSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
+        // Navigate to Unit Details Page
       },
       child: Container(
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(0, 255, 255, 255),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(icon, size: 30, color: const Color(0xFF000000)),
-            const SizedBox(height: 10),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            const Text(
+              'Unit No: A - Block-1',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            SvgPicture.asset(
+              'assets/icons/my_unit/unit.svg',
+              width: 30,
+              height: 30,
             ),
           ],
         ),
@@ -194,41 +113,165 @@ class MyUnitPage extends StatelessWidget {
   }
 }
 
+class PendingDuesSection extends StatelessWidget {
+  const PendingDuesSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to Bill Payment Page
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/my_unit/bill_payment.svg',
+                  width: 24,
+                  height: 24,
+                  color: Colors.red,
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  'Pending Due:',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const Text(
+              '₹5,300',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyUnitOptions extends StatelessWidget {
+  const MyUnitOptions({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3, // Three items per row
+        crossAxisSpacing: 16, // Spacing between columns
+        mainAxisSpacing: 16, // Spacing between rows
+      ),
+      itemCount: menuItems.length,
+      itemBuilder: (context, index) {
+        final item = menuItems[index];
+        return _menuItem(
+          context,
+          item['iconPath'],
+          item['label'],
+        );
+      },
+    );
+  }
+
+  Widget _menuItem(BuildContext context, String iconPath, String label) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16), // Rounded corners
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2), // Subtle shadow
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3), // Slightly offset
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            iconPath,
+            width: 48, // SVG size
+            height: 48,
+          ),
+          const SizedBox(height: 12), // Spacing between icon and text
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 14, // Text size
+              fontWeight: FontWeight.w500, // Medium weight
+              color: Colors.black87, // Subtle color
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
 // Menu items data
 final List<Map<String, dynamic>> menuItems = [
   {
-    'icon': Icons.payment,
-    'label': 'Bill Payments',
-    'page': const BillPaymentPage()
+    'iconPath': 'assets/icons/my_unit/bill_payment.svg',
+    'label': 'Bill Payment',
+    'page': const BillPaymentPage(), // Replace with actual page
   },
   {
-    'icon': Icons.shopping_cart,
+    'iconPath': 'assets/icons/my_unit/grocery.svg',
     'label': 'Groceries',
-    'page': const GroceryPage()
+    'page': const Placeholder(),
   },
   {
-    'icon': Icons.security,
+    'iconPath': 'assets/icons/my_unit/gatekeeper.svg',
     'label': 'Gatekeeper',
-    'page': const GatekeeperPage()
+    'page': const Placeholder(),
   },
   {
-    'icon': Icons.help_outline,
+    'iconPath': 'assets/icons/my_unit/help.svg',
     'label': 'Help Desk',
-    'page': const HelpdeskPage()
+    'page': const Placeholder(),
   },
   {
-    'icon': Icons.build,
+    'iconPath': 'assets/icons/my_unit/service.svg',
     'label': 'Request Service',
-    'page': const ConsumerServicePage()
+    'page': const Placeholder(),
   },
   {
-    'icon': Icons.local_hotel, // Example icon for Facilities
+    'iconPath': 'assets/icons/my_unit/facilities.svg',
     'label': 'Facilities',
-    'page': FacilitiesPage() // New Facilities page
+    'page': const Placeholder(),
   },
   {
-    'icon': Icons.hotel, // Example icon for Facilities
+    'iconPath': 'assets/icons/my_unit/dining.svg',
     'label': 'Dining',
-    'page': FacilitiesPage() // New Facilities page
-  }
+    'page': const Placeholder(),
+  },
 ];
