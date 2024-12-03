@@ -63,12 +63,12 @@ class AnnouncementWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade500,
+            color: Colors.grey.shade700,
             offset: const Offset(4.0, 4.0),
             blurRadius: 15,
             spreadRadius: 1.0,
           ),
-          const BoxShadow(
+          BoxShadow(
             color: Colors.white,
             offset: Offset(-4.0, -4.0),
             blurRadius: 15,

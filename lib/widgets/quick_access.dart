@@ -13,7 +13,7 @@ class QuickAccessButton extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.transparent,
+          color: Color(0x29004395),
           shape: BoxShape.circle,
           // boxShadow: [
           //   BoxShadow(

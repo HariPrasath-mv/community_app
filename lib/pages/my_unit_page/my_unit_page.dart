@@ -206,14 +206,14 @@ class MyUnitOptions extends StatelessWidget {
           )
         ],
       ),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
             iconPath,
-            width: 48, // SVG size
-            height: 48,
+            width: 40, // SVG size
+            height: 40,
           ),
           const SizedBox(height: 12), // Spacing between icon and text
           Text(

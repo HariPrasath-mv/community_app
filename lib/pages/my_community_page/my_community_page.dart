@@ -32,10 +32,10 @@ class MyCommunityPage extends StatelessWidget {
           onPressed: () {
             // Action for FAB
           },
-          backgroundColor: const Color(0xFF004395),
+          backgroundColor: AppColors.backgroundColor1,
           child: const Icon(
             Icons.add,
-            color: AppColors.appbariconColor3,
+            color: AppColors.appbariconColor1,
           ),
         ),
       ),
