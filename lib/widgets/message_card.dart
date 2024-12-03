@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_1/widgets/colors.dart';
-// import 'package:flutter_project_1/widgets/colors.dart';
 
 class MessageCard extends StatelessWidget {
   final Map<String, dynamic> message;
@@ -9,11 +8,26 @@ class MessageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-      elevation: 15,
-      color: AppColors.backgroundColor1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+        color: AppColors.backgroundColor1,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade500,
+            offset: const Offset(4.0, 4.0),
+            blurRadius: 15,
+            spreadRadius: 1.0,
+          ),
+          const BoxShadow(
+            color: Colors.white,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 15,
+            spreadRadius: 1.0,
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -103,14 +117,14 @@ class MessageCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.thumb_up, color: const Color(0xFF004395)),
+                    const Icon(Icons.thumb_up, color: Color(0xFF004395)),
                     const SizedBox(width: 4),
                     Text('${message['likes']} Likes'),
                   ],
                 ),
                 Row(
                   children: [
-                    Icon(Icons.comment_outlined, color:Color(0xFF004395)),
+                    const Icon(Icons.comment_outlined, color: Color(0xFF004395)),
                     const SizedBox(width: 4),
                     Text('${message['comments']} Comments'),
                   ],

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_1/pages/otp_verification_page/otp_verification_page.dart';
 import 'package:flutter_project_1/pages/my_unit_page/bill_payments/bill_payment_page.dart';
-// import 'package:flutter_project_1/widgets/colors.dart';
+import 'package:flutter_project_1/widgets/colors.dart';
+// import 'package:google_fonts/google_fonts.dart';
 // import 'pages/onboarding_page.dart';
 import 'pages/login_page/login.dart';
-import 'pages/login_page/forgot_password.dart'; 
+import 'pages/login_page/forgot_password.dart';
 import 'pages/sign_up_page/signup.dart';
 import 'pages/main_screen.dart';
 
@@ -20,8 +21,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor:Color(0xFFCCDCFF),  
+        primaryColor: AppColors.backgroundColor1,
+        scaffoldBackgroundColor: AppColors.backgroundColor1,
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.appbarColor1,
+        ),
+        // textTheme: GoogleFonts.openSansTextTheme(),
         fontFamily: 'Urbanist',
         textTheme: const TextTheme(
           displayLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
         ),
       ),
-      // home: const OnboardingPage(), // Start with the Onboarding page
+      // home: const OnboardingPage(),
       home: const MainScreen(), // Start with the Onboarding page
       routes: {
         '/login': (context) => const LoginPage(),

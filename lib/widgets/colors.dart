@@ -9,7 +9,7 @@ class AppColors {
   // Appbar color
   static const Color appbarColor1 = Color(0xFFFBFCFF); 
   static const Color appbarColor2 = Color(0xFF004395);
-  static const Color appbarColor3 = Color(0xFF004395);
+  static const Color appbarColor3 = Colors.deepPurpleAccent;
   
   static const Color iconColor1 = Color(0xFF000000);
   static const Color iconColor2 = Color(0xFF004395);

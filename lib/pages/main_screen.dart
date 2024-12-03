@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/widgets/colors.dart';
-import 'package:flutter_project_1/pages/home_page/home_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_project_1/widgets/colors.dart';
+import 'home_page/home_page.dart';
 import 'my_unit_page/my_unit_page.dart';
 import 'my_community_page/my_community_page.dart';
 import 'discover_page/discover_page.dart';
-// import 'consumer_service_page/consumer_service_page.dart';
 import 'consumer_service_page/service_page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -20,96 +18,132 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
+    HomePage(),
     const MyUnitPage(),
     const MyCommunityPage(),
     DiscoverPage(),
     ServicesPage(),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(_titles[_currentIndex]),
-      //   automaticallyImplyLeading: false,
-      //   backgroundColor: AppColors.iconColor1,
-      // ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         child: _pages[_currentIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: _CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.iconColor2,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 24,
-              height: 24,
-              child: SvgPicture.asset(
-                'assets/icons/home_page/home.svg',
-                color: _currentIndex == 0 ? AppColors.iconColor2 : Colors.grey,
-              ),
-            ),
-            label: "Home",
-            tooltip: "Go to Home",
+      ),
+    );
+  }
+}
+
+class _CustomBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const _CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade500,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 24,
-              height: 24,
-              child: SvgPicture.asset(
-                'assets/icons/home_page/my_unit.svg',
-                color: _currentIndex == 1 ? AppColors.iconColor2 : Colors.grey,
-              ),
-            ),
-            label: "My Unit",
-            tooltip: "View My Unit",
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
+          )
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildNavItem(
+            iconPath: 'assets/icons/home_page/home.svg',
+            label: 'Home',
+            index: 0,
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 24,
-              height: 24,
-              child: SvgPicture.asset(
-                'assets/icons/home_page/my_community.svg',
-                color: _currentIndex == 2 ? AppColors.iconColor2 : Colors.grey,
-              ),
-            ),
-            label: "My Community",
-            tooltip: "Explore My Community",
+          _buildNavItem(
+            iconPath: 'assets/icons/home_page/my_unit.svg',
+            label: 'My Unit',
+            index: 1,
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 24,
-              height: 24,
-              child: SvgPicture.asset(
-                'assets/icons/home_page/discover.svg',
-                color: _currentIndex == 3 ? AppColors.iconColor2 : Colors.grey,
-              ),
-            ),
-            label: "Discover",
-            tooltip: "Discover New Things",
+          _buildNavItem(
+            iconPath: 'assets/icons/home_page/my_community.svg',
+            label: 'My Community',
+            index: 2,
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
+          _buildNavItem(
+            iconPath: 'assets/icons/home_page/discover.svg',
+            label: 'Discover',
+            index: 3,
+          ),
+          _buildNavItem(
+            iconPath: 'assets/icons/home_page/services.svg',
+            label: 'Services',
+            index: 4,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavItem({
+    required String iconPath,
+    required String label,
+    required int index,
+  }) {
+    final isSelected = currentIndex == index;
+
+    return GestureDetector(
+      onTap: () => onTap(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: isSelected
+                ? BoxDecoration(
+                    color: AppColors.color1.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(16),
+                  )
+                : null,
+            child: SvgPicture.asset(
+              iconPath,
               width: 24,
               height: 24,
-              child: SvgPicture.asset(
-                'assets/icons/home_page/services.svg',
-                color: _currentIndex == 4 ? AppColors.iconColor2 : Colors.grey,
-              ),
+              color: isSelected ? AppColors.iconColor2 : Colors.grey,
             ),
-            label: "Services",
-            tooltip: "Access Services",
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color: isSelected ? AppColors.iconColor2 : Colors.grey,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ],
       ),

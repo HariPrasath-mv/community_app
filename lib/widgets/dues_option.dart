@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_1/widgets/colors.dart';
+import 'package:flutter_project_1/widgets/quick_access.dart';
 // import 'package:flutter_project_1/widgets/colors.dart';
 
 // DuesOption Widget with built-in parameters and logic
@@ -14,13 +15,20 @@ class DuesOption extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
-            color: Colors.black26,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            color: Colors.grey.shade500,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
           ),
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
+          )
         ],
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(14),
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         children: [
@@ -43,7 +51,7 @@ class DuesOption extends StatelessWidget {
               Text(
                 'Dues',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -53,11 +61,15 @@ class DuesOption extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.orange,
+                  color: Color(0xFFFF0000),
                 ),
               ),
             ],
           ),
+          SizedBox(
+            width: 150,
+          ),
+          QuickAccessButton()
         ],
       ),
     );

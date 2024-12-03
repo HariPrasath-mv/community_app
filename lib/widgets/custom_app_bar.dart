@@ -22,7 +22,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       automaticallyImplyLeading: false,
-      // backgroundColor: AppColors.appbarColor1,
       title: Text(
         title,
         style: const TextStyle(
@@ -34,31 +33,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.star, 
-          color: AppColors.iconColor1),
-          onPressed: onPopupTap,
-        ),
-        IconButton(
           icon: const Icon(Icons.notifications, color: AppColors.iconColor1),
           onPressed: onNotificationTap,
         ),
-        if (showProfile)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: onProfileTap,
-              child: const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://2.img-dpreview.com/files/p/E~C1000x0S4000x4000T1200x1200~articles/3925134721/0266554465.jpeg', // Replace with your image URL
-                ),
-              ),
-            ),
-          ),
       ],
     );
   }
-
-  
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

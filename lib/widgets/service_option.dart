@@ -25,11 +25,17 @@ class ServiceOption extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade300),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
+            color: Colors.grey.shade500,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
+          ),
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 10,
+            spreadRadius: 1.0,
+          )
           ],
         ),
         child: Column(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Import the flutter_svg package
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_project_1/widgets/colors.dart';
 
 class QuickAccessButton extends StatelessWidget {
@@ -9,41 +9,48 @@ class QuickAccessButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Display a custom popup card in the center of the screen
         _showPopupCard(context);
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.transparent, // Transparent background
-          shape: BoxShape.circle, // Circular shape
-          border: Border.all(
-            color: Colors.orange, // Border color same as icon color
-            width: 2, // Border width
-          ),
+          color: Colors.transparent,
+          shape: BoxShape.circle,
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.shade500,
+          //     offset: Offset(4.0, 4.0),
+          //     blurRadius: 15,
+          //     spreadRadius: 1.0,
+          //   ),
+          //   BoxShadow(
+          //     color: Colors.white,
+          //     offset: Offset(-4.0, -4.0),
+          //     blurRadius: 15,
+          //     spreadRadius: 1.0,
+          //   )
+          // ],
         ),
-        padding: const EdgeInsets.all(12), // Padding inside the circle
+        padding: const EdgeInsets.all(5),
         child: SvgPicture.asset(
-          'assets/icons/popup_icons/quick.svg', // SVG file path
-          width: 40,
-          height: 40,
+          'assets/icons/home_page/quick.svg',
+          width: 60,
+          height: 60,
         ),
       ),
     );
   }
-
-  // Function to show the popup card in the center
   void _showPopupCard(BuildContext context) {
     showDialog(
       context: context,
-      barrierDismissible: true, // Allow dismiss by tapping outside
+      barrierDismissible: true,
       builder: (BuildContext context) {
         return Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // Card border radius
+            borderRadius: BorderRadius.circular(12),
           ),
           elevation: 5,
           backgroundColor:
-              Colors.transparent, // Transparent background to show card
+              Colors.transparent,
           child: _PopupDialog(), // Custom widget for the dialog content
         );
       },
@@ -56,7 +63,8 @@ class _PopupDialog extends StatefulWidget {
   State<_PopupDialog> createState() => _PopupDialogState();
 }
 
-class _PopupDialogState extends State<_PopupDialog> with TickerProviderStateMixin {
+class _PopupDialogState extends State<_PopupDialog>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
@@ -65,10 +73,7 @@ class _PopupDialogState extends State<_PopupDialog> with TickerProviderStateMixi
     {'icon': 'assets/icons/popup_icons/profile.svg', 'label': 'My Profile'},
     {'icon': 'assets/icons/popup_icons/dues.svg', 'label': 'My Dues'},
     {'icon': 'assets/icons/popup_icons/people.svg', 'label': 'Add Visitors'},
-    {
-      'icon': 'assets/icons/popup_icons/gatekeeper.svg',
-      'label': 'GateKeeper'
-    },
+    {'icon': 'assets/icons/popup_icons/gatekeeper.svg', 'label': 'GateKeeper'},
     {
       'icon': 'assets/icons/popup_icons/request_service.svg',
       'label': 'Request Service'
@@ -238,4 +243,3 @@ class _PopupDialogState extends State<_PopupDialog> with TickerProviderStateMixi
     );
   }
 }
-

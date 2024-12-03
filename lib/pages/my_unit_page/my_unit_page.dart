@@ -2,34 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'bill_payments/bill_payment_page.dart';
 
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Urbanist', // Modern font
-      ),
-      home: const MyUnitPage(),
-    );
-  }
-}
-
 class MyUnitPage extends StatelessWidget {
   const MyUnitPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5), // Light background
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -83,11 +61,17 @@ class UnitInfoSection extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 2),
+              color: Colors.grey.shade500,
+              offset: Offset(4.0, 4.0),
+              blurRadius: 15,
+              spreadRadius: 1.0,
             ),
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(-4.0, -4.0),
+              blurRadius: 15,
+              spreadRadius: 1.0,
+            )
           ],
         ),
         child: Row(
@@ -103,8 +87,8 @@ class UnitInfoSection extends StatelessWidget {
             ),
             SvgPicture.asset(
               'assets/icons/my_unit/unit.svg',
-              width: 30,
-              height: 30,
+              width: 40,
+              height: 40,
             ),
           ],
         ),
@@ -123,17 +107,23 @@ class PendingDuesSection extends StatelessWidget {
         // Navigate to Bill Payment Page
       },
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 2),
+              color: Colors.grey.shade500,
+              offset: Offset(4.0, 4.0),
+              blurRadius: 15,
+              spreadRadius: 1.0,
             ),
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(-4.0, -4.0),
+              blurRadius: 15,
+              spreadRadius: 1.0,
+            )
           ],
         ),
         child: Row(
@@ -142,10 +132,10 @@ class PendingDuesSection extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(
-                  'assets/icons/my_unit/bill_payment.svg',
-                  width: 24,
-                  height: 24,
-                  color: Colors.red,
+                  'assets/icons/my_unit/bill.svg',
+                  width: 50,
+                  height: 50,
+                  // color: const Color.fromARGB(255, 255, 196, 0),
                 ),
                 const SizedBox(width: 10),
                 const Text(
@@ -203,11 +193,17 @@ class MyUnitOptions extends StatelessWidget {
         borderRadius: BorderRadius.circular(16), // Rounded corners
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2), // Subtle shadow
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3), // Slightly offset
+            color: Colors.grey.shade500,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 15,
+            spreadRadius: 1.0,
           ),
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-4.0, -4.0),
+            blurRadius: 15,
+            spreadRadius: 1.0,
+          )
         ],
       ),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
@@ -235,14 +231,12 @@ class MyUnitOptions extends StatelessWidget {
   }
 }
 
-
-
 // Menu items data
 final List<Map<String, dynamic>> menuItems = [
   {
     'iconPath': 'assets/icons/my_unit/bill_payment.svg',
     'label': 'Bill Payment',
-    'page': const BillPaymentPage(), // Replace with actual page
+    'page': const BillPaymentPage(),
   },
   {
     'iconPath': 'assets/icons/my_unit/grocery.svg',
